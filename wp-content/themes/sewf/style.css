@@ -1,0 +1,350 @@
+/*
+Theme Name: SEWF Site
+Description: A child theme of astra, scaffolded by Studio Code.
+Template: astra
+Requires at least: 6.7
+Tested up to: 6.9
+Requires PHP: 7.2
+Version: 0.1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: sewf
+Tags: full-site-editing, block-patterns, block-styles, wide-blocks, accessibility-ready, style-variations
+*/
+
+/* === SEWF earthy-organic design system === */
+
+:root {
+	/* Map onto the theme palette — reference preset slugs, never hardcode hex here. */
+	--site-bg: var( --wp--preset--color--sand );
+	--site-text: var( --wp--preset--color--bark );
+	--ink: var( --wp--preset--color--espresso );
+	--terracotta: var( --wp--preset--color--terracotta );
+	--sage: var( --wp--preset--color--sage );
+	--cream: var( --wp--preset--color--cream );
+	--clay: var( --wp--preset--color--clay );
+	--hairline: color-mix( in srgb, var( --wp--preset--color--bark ) 15%, transparent );
+	--radius-arch: 999px 999px 0 0;
+	--radius-blob: 60% 40% 55% 45% / 50% 60% 40% 50%;
+}
+
+/* === neutralize Astra defaults to the SEWF palette === */
+body {
+	background-color: var( --site-bg ) !important;
+}
+.entry-content .wp-block-heading,
+h1, h2, h3, h4 {
+	color: var( --site-text );
+}
+
+/* Primary buttons are terracotta, not Astra's blue */
+.wp-block-button__link.wp-element-button {
+	background-color: var( --terracotta ) !important;
+	color: var( --wp--preset--color--cream ) !important;
+}
+
+/* === header branding (follows the logo's colors) === */
+.site-header {
+	border-bottom: 1px solid var( --hairline );
+}
+.ast-site-title-wrap .site-title a {
+	font-family: var( --wp--preset--font-family--display );
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	color: var( --wp--preset--color--espresso );
+}
+.ast-site-title-wrap .site-description {
+	color: var( --wp--preset--color--sage );
+	font-size: 0.72rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+}
+body .main-header-menu .menu-link {
+	color: var( --wp--preset--color--bark ) !important;
+}
+body .main-header-menu .menu-link:hover,
+body .main-header-menu li.current-menu-item .menu-link,
+body .main-header-menu li.current_page_item .menu-link {
+	color: var( --wp--preset--color--terracotta ) !important;
+}
+
+/* === typography refinements === */
+.wp-block-post-content,
+.entry-content {
+	font-family: var( --wp--preset--font-family--body );
+}
+
+/* Eyebrow / label above a section title */
+.ewf-eyebrow {
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: var( --terracotta );
+}
+
+/* Accent word in terracotta inside a heading */
+.ewf-accent {
+	color: var( --terracotta );
+}
+.ewf-italic {
+	font-style: italic;
+	font-weight: 500;
+}
+
+/* Monogram avatar used for leadership cards until real photos are added */
+.ewf-monogram {
+	width: 74px;
+	height: 74px;
+	line-height: 74px;
+	margin: 0 0 1.1rem;
+	border-radius: var( --radius-blob );
+	background: var( --terracotta );
+	color: var( --wp--preset--color--cream );
+	font-family: var( --wp--preset--font-family--display );
+	font-size: 2.2rem;
+	font-weight: 600;
+	text-align: center;
+}
+
+/* Role label on team cards */
+.ewf-role {
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: var( --terracotta );
+}
+
+/* === eyebrow inside a dark section flips to cream === */
+.has-espresso-background-color .ewf-eyebrow,
+.has-olive-background-color .ewf-eyebrow,
+.has-bark-background-color .ewf-eyebrow {
+	color: var( --clay );
+}
+.has-espresso-background-color .ewf-accent,
+.has-olive-background-color .ewf-accent,
+.has-bark-background-color .ewf-accent {
+	color: var( --clay );
+}
+
+/* === cards (registered block style) === */
+.is-style-card {
+	background: var( --cream );
+	border: 1px solid var( --hairline );
+	border-radius: 999px 999px 1.25rem 1.25rem;
+	padding: 2rem 1.75rem;
+	position: relative;
+}
+.has-olive-background-color .is-style-card,
+.has-espresso-background-color .is-style-card,
+.has-bark-background-color .is-style-card {
+	background: color-mix( in srgb, var( --wp--preset--color--cream ) 8%, transparent );
+	border-color: color-mix( in srgb, var( --wp--preset--color--sand ) 18%, transparent );
+}
+
+/* === arch image frame === */
+/* Apply to the image/card that should carry the arch silhouette. */
+.ewf-arch img {
+	border-radius: var( --radius-arch );
+}
+.ewf-circle img {
+	border-radius: var( --radius-blob );
+}
+
+/* === fine grain on dark sections === */
+.has-espresso-background-color,
+.has-olive-background-color,
+.has-bark-background-color {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	background-size: 140px 140px;
+}
+
+/* === blob accent shapes (decorative) === */
+.ewf-blob {
+	position: absolute;
+	pointer-events: none;
+	border-radius: var( --radius-blob );
+}
+
+/* === section rhythm === */
+.ewf-section {
+	padding-block: clamp( 3.5rem, 8vw, 6.5rem );
+}
+
+/* === buttons === */
+.ewf-btn-outline .wp-element-button {
+	background: transparent !important;
+	color: var( --terracotta ) !important;
+	border: 2px solid var( --terracotta ) !important;
+}
+.has-espresso-background-color .ewf-btn-outline .wp-element-button,
+.has-olive-background-color .ewf-btn-outline .wp-element-button,
+.has-bark-background-color .ewf-btn-outline .wp-element-button {
+	color: var( --cream ) !important;
+	border-color: var( --clay ) !important;
+}
+.ewf-btn-light .wp-element-button {
+	background: var( --cream ) !important;
+	color: var( --wp--preset--color--espresso ) !important;
+}
+
+/* === responsive === */
+@media (max-width: 781px) {
+	.is-style-card {
+		padding: 1.5rem 1.25rem;
+	}
+}
+
+/* === light/dark theme toggle button === */
+#sewf-theme-toggle {
+	position: fixed;
+	right: 22px;
+	bottom: 22px;
+	z-index: 9999;
+	width: 48px;
+	height: 48px;
+	padding: 0;
+	box-sizing: border-box;
+	border-radius: 50%;
+	border: none;
+	background: var( --wp--preset--color--terracotta );
+	color: var( --wp--preset--color--cream );
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 16px rgba( 0, 0, 0, 0.22 );
+	cursor: pointer;
+}
+#sewf-theme-toggle svg {
+	display: none;
+}
+html[data-theme="light"] #sewf-theme-toggle #sewf-theme-moon { display: block; }
+html[data-theme="dark"] #sewf-theme-toggle #sewf-theme-sun { display: block; }
+
+/* === dark theme overrides === */
+html[data-theme="dark"] {
+	--site-bg: #221913;
+	--site-text: #f4ebdc;
+	--cream: #2b2119;
+}
+html[data-theme="dark"] body {
+	background-color: #221913 !important;
+	color: var( --site-text ) !important;
+}
+html[data-theme="dark"] .entry-content .wp-block-heading,
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4 {
+	color: #f7f0e3;
+}
+html[data-theme="dark"] .has-cream-background-color,
+html[data-theme="dark"] .has-sand-background-color,
+html[data-theme="dark"] .has-sand-light-background-color {
+	background-color: var( --cream ) !important;
+}
+html[data-theme="dark"] .is-style-card {
+	background: var( --cream );
+	border-color: color-mix( in srgb, var( --wp--preset--color--sand ) 20%, transparent );
+}
+html[data-theme="dark"] .ewf-eyebrow {
+	color: var( --wp--preset--color--clay );
+}
+html[data-theme="dark"] .has-olive-background-color .ewf-eyebrow,
+html[data-theme="dark"] .has-espresso-background-color .ewf-eyebrow,
+html[data-theme="dark"] .has-bark-background-color .ewf-eyebrow {
+	color: var( --wp--preset--color--clay );
+}
+html[data-theme="dark"] .ast-site-title-wrap .site-title a {
+	color: #f7f0e3 !important;
+}
+html[data-theme="dark"] body .main-header-menu .menu-link {
+	color: var( --site-text ) !important;
+}
+html[data-theme="dark"] body .main-header-menu li.current-menu-item .menu-link {
+	color: var( --wp--preset--color--terracotta ) !important;
+}
+html[data-theme="dark"] .site-header {
+	border-bottom-color: color-mix( in srgb, var( --wp--preset--color--sand ) 18%, transparent );
+}
+
+/* EN / SW language switcher (fixed, lower-right, above the theme toggle) */
+.ewf-lang-bar {
+	position: fixed;
+	z-index: 99998;
+	right: 22px;
+	bottom: 86px;
+	display: inline-flex;
+	align-items: stretch;
+	overflow: hidden;
+	border: 1px solid color-mix( in srgb, var( --wp--preset--color--clay ) 55%, var( --site-bg ) );
+	border-radius: 999px;
+	box-shadow: 0 4px 18px color-mix( in srgb, var( --wp--preset--color--espresso ) 22%, transparent );
+	background: var( --site-bg );
+}
+.ewf-lang-bar .ewf-lang {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	padding: 8px 12px;
+	font-size: 0.74rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	line-height: 1;
+	color: var( --wp--preset--color--bark );
+	text-decoration: none;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+.ewf-lang-bar .ewf-lang:hover {
+	background: color-mix( in srgb, var( --wp--preset--color--sand ) 40%, transparent );
+}
+.ewf-lang-bar .ewf-lang + .ewf-lang {
+	border-left: 1px solid color-mix( in srgb, var( --wp--preset--color--clay ) 55%, var( --site-bg ) );
+}
+.ewf-lang-bar .ewf-lang.current {
+	background: var( --wp--preset--color--terracotta );
+	color: #f7f0e3 !important;
+}
+html[data-theme="dark"] .ewf-lang-bar {
+	border-color: color-mix( in srgb, var( --wp--preset--color--sand ) 25%, transparent );
+	background: var( --cream );
+}
+html[data-theme="dark"] .ewf-lang-bar .ewf-lang {
+	color: var( --site-text );
+}
+html[data-theme="dark"] .ewf-lang-bar .ewf-lang:hover {
+	background: color-mix( in srgb, var( --wp--preset--color--terracotta ) 22%, transparent );
+}
+html[data-theme="dark"] .ewf-lang-bar .ewf-lang + .ewf-lang {
+	border-left-color: color-mix( in srgb, var( --wp--preset--color--sand ) 25%, transparent );
+}
+
+/* Place the theme toggle and language switcher in the header/navbar on desktop */
+@media (min-width: 922px) {
+	#sewf-theme-toggle {
+		top: 16px;
+		right: 18px;
+		bottom: auto;
+	}
+	.ewf-lang-bar {
+		right: 76px;
+		top: 25px;
+		bottom: auto;
+	}
+	.main-header-bar-navigation,
+	#primary-site-navigation {
+		margin-right: 178px;
+	}
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation: none !important;
+		transition: none !important;
+		scroll-behavior: auto !important;
+	}
+}
