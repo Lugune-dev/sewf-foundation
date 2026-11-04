@@ -1,3 +1,4 @@
+
 FROM wordpress:php8.4-apache
 
 COPY . /var/www/html/
