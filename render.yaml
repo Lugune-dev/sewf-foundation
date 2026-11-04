@@ -11,6 +11,9 @@ services:
       - key: WORDPRESS_DB_HOST
         sync: false
 
+      - key: WORDPRESS_DB_PORT
+        sync: false
+
       - key: WORDPRESS_DB_USER
         sync: false
 
@@ -23,5 +26,5 @@ services:
       - key: WORDPRESS_DB_SSL
         value: "true"
 
-            - key: WORDPRESS_CONFIG_EXTRA
+      - key: WORDPRESS_CONFIG_EXTRA
         value: "define('WP_HOME', 'https://sewf-foundation.onrender.com'); define('WP_SITEURL', 'https://sewf-foundation.onrender.com');"
