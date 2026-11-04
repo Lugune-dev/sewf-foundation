@@ -1,3 +1,4 @@
+
 services:
   - type: web
     name: sewf-foundation
@@ -5,14 +6,22 @@ services:
     plan: free
     repo: https://github.com/Lugune-dev/sewf-foundation
     branch: main
+
     envVars:
       - key: WORDPRESS_DB_HOST
         sync: false
+
       - key: WORDPRESS_DB_USER
         sync: false
+
       - key: WORDPRESS_DB_PASSWORD
         sync: false
+
       - key: WORDPRESS_DB_NAME
         sync: false
+
       - key: WORDPRESS_DB_SSL
         value: "true"
+
+      - key: WORDPRESS_CONFIG_EXTRA
+        value: "define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);"
